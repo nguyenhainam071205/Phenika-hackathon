@@ -1,0 +1,15 @@
+{
+  "DicomWeb" : {
+    "Enable" : true,
+    "Root" : "/dicom-web/",
+    "EnableWado" : true,
+    "WadoRoot" : "/wado",
+    "Host" : "localhost:8042", 
+    "Ssl" : false
+  },
+
+  "HttpServer" : {
+    "CorsEnabled" : true,
+    "AuthenticationEnabled" : false
+  }
+}

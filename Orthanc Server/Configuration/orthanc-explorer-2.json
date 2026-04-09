@@ -1,0 +1,12 @@
+{
+    "OrthancExplorer2" : {
+        "Enable": true,
+        "IsDefaultOrthancUI": true,
+        "Theme": "light",
+        "CustomTitle": "Orthanc Explorer - Hackathon",
+        "CustomCssPath": "C:/Program Files/Orthanc Server/Configuration/oe2-custom.css"
+
+        // more configurations options available ... check 
+        // https://github.com/orthanc-server/orthanc-explorer-2/blob/master/Plugin/DefaultConfiguration.json
+    }
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "d1690978-1631-45c0-969e-1fd42b60e5ad",
+  "study_id": "DEMO_STUDY",
+  "image_id": "DEMO_IMAGE",
+  "revision_id": "e9765830-fa35-47ef-b3a3-25d53f85cee3",
+  "report_id": "91fc0102-d3b3-463a-98ff-e34a400c6d0b",
+  "generated_at": "2026-04-08T14:23:33.534548+07:00",
+  "report_vi": {
+    "ky_thuat": "Chụp X-quang ngực thẳng (PA) tư thế đứng. Chất lượng phim đạt yêu cầu.",
+    "nhan_xet": {
+      "tim_trung_that": "Bóng tim to nhẹ, chỉ số tim/lồng ngực (CTR) khoảng 0,52. Trung thất không có bất thường rõ.",
+      "phoi": "Không có đám mờ hay khối mờ. Phổi thông thoáng.",
+      "mang_phoi": "Tràn dịch màng phổi phải mức độ vừa, góc sườn hoành phải tù.",
+      "xuong_mo_mem": "Không có bất thường xương cấp tính."
+    },
+    "ket_luan": [
+      "Tràn dịch màng phổi phải kèm theo (parapneumonic) mức độ vừa.",
+      "Tim to nhẹ (CTR ~0,52)."
+    ],
+    "de_nghi": null,
+    "icd10": [
+      {
+        "ma": "J90",
+        "mo_ta": "Tràn dịch màng phổi"
+      },
+      {
+        "ma": "I51.7",
+        "mo_ta": "Tim to"
+      }
+    ]
+  },
+  "report_en": {
+    "technique": "PA chest radiograph, erect position. Adequate quality.",
+    "findings": {
+      "cardiac_mediastinum": "Mildly enlarged cardiac silhouette (CTR approximately 0.52). Mediastinal contours are otherwise unremarkable.",
+      "lungs": "No opacity or mass identified. Lungs are clear.",
+      "pleura": "Right pleural effusion, moderate in size with blunting of the right costophrenic angle.",
+      "bones_soft_tissue": "No acute soft tissue abnormality."
+    },
+    "impression": [
+      "Associated right parapneumonic pleural effusion, moderate.",
+      "Mild cardiomegaly (CTR ~0.52)."
+    ],
+    "recommendation": null,
+    "icd10": [
+      {
+        "code": "J90",
+        "description": "Pleural effusion"
+      },
+      {
+        "code": "I51.7",
+        "description": "Cardiomegaly"
+      }
+    ]
+  },
+  "metadata": {
+    "rag_version": "2.0",
+    "kb_version": "RAG2_KB_v1.0",
+    "llm_model": "openai/gpt-4o-mini",
+    "report_standard": "BYT",
+    "language": "vi+en",
+    "chunks_used": 3,
+    "processing_time_ms": 10875,
+    "critical_flags": [],
+    "requires_urgent_review": false,
+    "confidence_notes": [],
+    "findings_count_input": 2,
+    "findings_count_output": 2
+  }
+}

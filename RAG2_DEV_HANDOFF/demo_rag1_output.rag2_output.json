@@ -1,0 +1,70 @@
+{
+  "query_id": "d1690978-1631-45c0-969e-1fd42b60e5ad",
+  "study_id": "DEMO_STUDY",
+  "image_id": "DEMO_IMAGE",
+  "revision_id": "05fcc005-72bf-4f10-9099-17836e11e952",
+  "report_id": "dd437605-3f81-4609-9af8-81d585093c09",
+  "generated_at": "2026-04-08T14:27:14.992399+07:00",
+  "report_vi": {
+    "ky_thuat": "Chụp X-quang ngực thẳng (PA) tư thế đứng. Chất lượng phim đạt yêu cầu.",
+    "nhan_xet": {
+      "tim_trung_that": "Bóng tim to nhẹ, chỉ số tim/lồng ngực (CTR) khoảng 0,52. Các đường viền trung thất không có bất thường rõ.",
+      "phoi": "Không có đám mờ hay khối mờ. Phổi thông thoáng.",
+      "mang_phoi": "Tràn dịch màng phổi phải mức độ vừa, góc sườn hoành phải tù rõ. Không có tràn dịch màng phổi bên trái.",
+      "xuong_mo_mem": "Các thành phần xương nhìn thấy còn nguyên vẹn. Không có bất thường mô mềm cấp tính."
+    },
+    "ket_luan": [
+      "Tràn dịch màng phổi phải kèm theo mức độ vừa (J90).",
+      "Tim to nhẹ (CTR ~0,52) (I51.7)."
+    ],
+    "de_nghi": null,
+    "icd10": [
+      {
+        "ma": "J90",
+        "mo_ta": "Tràn dịch màng phổi"
+      },
+      {
+        "ma": "I51.7",
+        "mo_ta": "Tim to"
+      }
+    ]
+  },
+  "report_en": {
+    "technique": "PA chest radiograph, erect position. Adequate quality.",
+    "findings": {
+      "cardiac_mediastinum": "Mildly enlarged cardiac silhouette (CTR approximately 0.52). Mediastinal contours are otherwise unremarkable.",
+      "lungs": "No opacity or mass identified. Lungs are clear.",
+      "pleura": "Right pleural effusion, moderate in size. No left-sided effusion.",
+      "bones_soft_tissue": "Visible osseous structures are intact. No acute soft tissue abnormality."
+    },
+    "impression": [
+      "Right pleural effusion, moderate (J90).",
+      "Mild cardiomegaly (CTR ~0.52) (I51.7)."
+    ],
+    "recommendation": null,
+    "icd10": [
+      {
+        "code": "J90",
+        "description": "Pleural effusion"
+      },
+      {
+        "code": "I51.7",
+        "description": "Cardiomegaly"
+      }
+    ]
+  },
+  "metadata": {
+    "rag_version": "2.0",
+    "kb_version": "RAG2_KB_v1.0",
+    "llm_model": "openai/gpt-4o-mini",
+    "report_standard": "BYT",
+    "language": "vi+en",
+    "chunks_used": 3,
+    "processing_time_ms": 18900,
+    "critical_flags": [],
+    "requires_urgent_review": false,
+    "confidence_notes": [],
+    "findings_count_input": 2,
+    "findings_count_output": 2
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "query_id": "d1690978-1631-45c0-969e-1fd42b60e5ad",
+  "study_id": "DEMO_STUDY",
+  "image_id": "DEMO_IMAGE",
+  "revision_id": "05fcc005-72bf-4f10-9099-17836e11e952",
+  "revised_at": "2026-04-08T14:26:54.372782+00:00",
+  "revised_by": "AUTO_ADAPTER",
+  "technique": {
+    "view": "PA",
+    "position": "erect",
+    "image_quality": "adequate",
+    "quality_notes": null
+  },
+  "confirmed_findings": [
+    {
+      "det_id": 0,
+      "class_id": 10,
+      "class_name": "Pleural Effusion",
+      "source": "ai_confirmed",
+      "laterality": "Right",
+      "severity": "moderate",
+      "severity_source": "ai_suggested",
+      "bbox_xyxy": [],
+      "bbox_norm": [],
+      "doctor_note": null,
+      "rag1_impression_accepted": true,
+      "rag1_impression_override": null,
+      "rag1_impression_original": "Tràn dịch màng phổi bên phải với mức độ trung bình, có thể thấy dấu hiệu tù góc sườn-hoành và mờ 1/3–1/2 phổi. Cần đánh giá thêm để xác định nguyên nhân và mức độ ảnh hưởng đến hô hấp.",
+      "measurements": {
+        "max_depth_mm": null,
+        "ctr": null,
+        "diameter_mm": null,
+        "length_mm": null,
+        "area_cm2": null
+      },
+      "icd10_suggested": "J90",
+      "icd10_confirmed": "J90",
+      "critical_flag": false
+    },
+    {
+      "det_id": 1,
+      "class_id": 3,
+      "class_name": "Cardiomegaly",
+      "source": "ai_confirmed",
+      "laterality": "Central",
+      "severity": "moderate",
+      "severity_source": "ai_suggested",
+      "bbox_xyxy": [],
+      "bbox_norm": [],
+      "doctor_note": null,
+      "rag1_impression_accepted": true,
+      "rag1_impression_override": null,
+      "rag1_impression_original": "Trên phim X-quang ngực, có dấu hiệu tim to với tỷ lệ cardiothoracic ratio (CTR) khoảng 0.6, cho thấy sự phình to của tim. Bờ trái tim vồng ra, có thể liên quan đến tình trạng suy tim sung huyết hoặc bệnh lý tim phổi mạn tính.",
+      "measurements": {
+        "max_depth_mm": null,
+        "ctr": null,
+        "diameter_mm": null,
+        "length_mm": null,
+        "area_cm2": null
+      },
+      "icd10_suggested": "I51.7",
+      "icd10_confirmed": "I51.7",
+      "critical_flag": false
+    }
+  ],
+  "normal_structures": [
+    "Aorta",
+    "Bones",
+    "Soft tissue",
+    "Trachea"
+  ],
+  "doctor_global_assessment": {
+    "overall_severity": "moderate",
+    "requires_urgent_action": false,
+    "comparison_available": false,
+    "comparison_notes": null,
+    "free_text_summary": "Trên phim X-quang ngực, phát hiện có tràn dịch màng phổi bên phải với mức độ trung bình. Ngoài ra, có dấu hiệu phì đại tim với mức độ trung bình. Cần theo dõi tình trạng tràn dịch và phì đại tim để đánh giá nguyên nhân và điều trị thích hợp."
+  },
+  "patient_context": {
+    "age": null,
+    "sex": "unknown",
+    "clinical_notes": "",
+    "prior_study_id": null
+  },
+  "rag2_config": {
+    "mode": "full_report",
+    "language": "vi+en",
+    "report_standard": "BYT",
+    "top_k": 5,
+    "include_icd10": true,
+    "include_recommendation": true
+  }
+}

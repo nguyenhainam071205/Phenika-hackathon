@@ -1,0 +1,29 @@
+# Ignore environment variables
+.env
+**/.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+
+# Node / JS
+node_modules/
+dist/
+build/
+.npm/
+.yarn/
+yarn-error.log
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db

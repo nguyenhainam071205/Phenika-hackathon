@@ -1,0 +1,10 @@
+{
+    /**
+    * Configuration of the ModalityWorklists plugin, that can be used
+    * to serve DICOM modality worklists.
+    **/
+    "Worklists" : {
+        "Enable": false,
+        "Database": "/var/lib/orthanc/worklists"
+    }
+}

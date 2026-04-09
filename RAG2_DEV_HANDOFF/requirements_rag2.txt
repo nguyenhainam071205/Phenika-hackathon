@@ -1,0 +1,7 @@
+openai>=1.30
+chromadb>=0.5
+pydantic>=2.0
+python-dotenv>=1.0
+fastapi>=0.115
+uvicorn>=0.30
+python-multipart>=0.0.9

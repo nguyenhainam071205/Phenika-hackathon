@@ -1,0 +1,46 @@
+:root {
+    --bootstrap-theme: light;
+    --study-hover-color: #d9f2e6;
+    --study-selected-color: #edf8f1;
+    --study-details-bg-color: #f7fcf9;
+    --series-hover-color: #d9f2e6;
+    --series-selected-color: #edf8f1;
+    --series-details-bg-color: #f7fcf9;
+    --nav-side-bg-color: #113b2f;
+    --nav-side-color: #f5fff9;
+    --nav-side-hover-bg-color: #1b5a47;
+    --nav-side-selected-bg-color: #266e58;
+    --nav-side-active-border-color: #9be3c7;
+    --label-bg-color: #36b37e;
+    --bs-primary: #1f7a5c;
+    --bs-primary-rgb: 31, 122, 92;
+    --bs-link-color-rgb: 31, 122, 92;
+    --bs-border-color: #d3e6dc;
+}
+
+#app {
+    text-align: left;
+}
+
+.nav-side-menu .orthanc-name {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.btn-primary {
+    --bs-btn-bg: #1f7a5c;
+    --bs-btn-border-color: #1f7a5c;
+    --bs-btn-hover-bg: #186149;
+    --bs-btn-hover-border-color: #186149;
+    --bs-btn-active-bg: #144f3c;
+    --bs-btn-active-border-color: #144f3c;
+}
+
+.study-header,
+.series-header {
+    font-weight: 600;
+}
+
+.content {
+    background: linear-gradient(180deg, #f8fcfa 0%, #eef7f2 100%);
+}
