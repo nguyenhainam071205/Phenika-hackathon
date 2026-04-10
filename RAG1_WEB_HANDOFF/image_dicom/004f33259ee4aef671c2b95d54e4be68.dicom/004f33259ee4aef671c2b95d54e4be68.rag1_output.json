@@ -1,0 +1,99 @@
+{
+  "query_id": "req-20260406-154657-004f33259ee4aef671c2b95d54e4be68",
+  "study_id": "",
+  "image_id": "",
+  "results_per_detection": [
+    {
+      "det_id": 0,
+      "class_id": 0,
+      "class_name": "Aortic enlargement",
+      "laterality": "Central",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "KB_00_xray_features_001",
+          "source": "RAG1_KB_v2.0",
+          "section": "xray_features",
+          "relevance_score": 0.0328,
+          "content": "• Bóng trung thất trên rộng >8 cm (phim PA thẳng, thở vào đủ)\n• Cung động mạch chủ nổi, vồng bờ trái trung thất\n• Khí quản lệch phải trong phình cung động mạch chủ\n• Vôi hóa thành mạch (eggshell calcification) dọc bờ phình\n• Tràn dịch màng phổi trái — dấu hiệu cảnh báo rò/vỡ\n• Dấu hiệu calcium sign: khoảng cách nội mạc-ngoại mạc >5 mm gợi bóc tách",
+          "icd10": "I71",
+          "references": []
+        },
+        {
+          "chunk_id": "KB_00_severity_001",
+          "source": "RAG1_KB_v2.0",
+          "section": "severity",
+          "relevance_score": 0.032,
+          "content": "Mức độ\nTiêu chí X-quang + Lâm sàng\nMild\nĐK 3.5–4.4 cm; bóng chủ hơi vồng; chưa có triệu chứng; theo dõi CTA mỗi 2–3 năm\nModerate\nĐK 4.5–5.4 cm; trung thất rộng rõ; theo dõi CTA mỗi 6–12 tháng\nSevere\nĐK ≥5.5 cm hoặc tăng >0.5 cm/6 tháng; chỉ định phẫu thuật/can thiệp nội mạch",
+          "icd10": "I71",
+          "references": []
+        },
+        {
+          "chunk_id": "KB_00_next_steps_001",
+          "source": "RAG1_KB_v2.0",
+          "section": "next_steps",
+          "relevance_score": 0.0318,
+          "content": "CT-angiography (CTA) ngực-bụng là tiêu chuẩn. MRI mạch máu nếu CTA chống chỉ định. Không dùng X-quang\nđơn thuần để đo ĐK chính xác.",
+          "icd10": "I71",
+          "references": []
+        },
+        {
+          "chunk_id": "KB_00_ddx_001",
+          "source": "RAG1_KB_v2.0",
+          "section": "ddx",
+          "relevance_score": 0.0315,
+          "content": "• Phì đại thất trái — tim to theo trục trái, không mở rộng trung thất trên\n• U trung thất trước — không liên tục với bóng mạch máu\n• Bóc tách động mạch chủ (aortic dissection) — trung thất rộng đột ngột, đau dữ dội\n• Tortuous aorta (xoắn vặn tuổi già) — bóng chủ ngoằn ngoèo không phình thực sự",
+          "icd10": "I71",
+          "references": []
+        },
+        {
+          "chunk_id": "KB_00_definition_001",
+          "source": "RAG1_KB_v2.0",
+          "section": "definition",
+          "relevance_score": 0.0167,
+          "content": "Giãn động mạch chủ (aortic enlargement/aortic dilatation) là tình trạng đường kính động mạch chủ ngực\nvượt giới hạn bình thường. Trên X-quang PA chuẩn, bóng động mạch chủ lên rộng >4 cm hoặc cung động\nmạch chủ vồng sang trái là bất thường. Phình thực sự (true aneurysm) khi đường kính tăng >50% đoạn\nliền kề; bóc tách (dissection) tạo ra khẩu kính giả (false lumen). Ở người >40 tuổi, động mạch chủ ngực\nlên <3.5 cm, cung <2.9 cm, xuống <2.5 cm là bình thường.",
+          "icd10": "I71",
+          "references": []
+        }
+      ],
+      "findings_draft": {
+        "impression": "Trên X-quang, có dấu hiệu giãn động mạch chủ với đường kính trung thất có thể lớn hơn 4 cm. Cung động mạch chủ nổi và có thể vồng bờ trái trung thất. Cần đánh giá thêm để xác định mức độ nghiêm trọng và các yếu tố liên quan.",
+        "severity_assessment": "moderate",
+        "severity_confidence": 0.64,
+        "differential_diagnosis": [
+          {
+            "dx": "Bóc tách động mạch chủ",
+            "likelihood": "possible"
+          },
+          {
+            "dx": "Phì đại thất trái",
+            "likelihood": "unlikely"
+          },
+          {
+            "dx": "U trung thất trước",
+            "likelihood": "unlikely"
+          },
+          {
+            "dx": "Tortuous aorta",
+            "likelihood": "possible"
+          }
+        ],
+        "recommended_next_steps": "Thực hiện CT-angiography (CTA) ngực-bụng để đánh giá chính xác đường kính động mạch chủ và xác định mức độ giãn. Nếu CTA chống chỉ định, xem xét MRI mạch máu.",
+        "critical_flag": false,
+        "flags": []
+      }
+    }
+  ],
+  "overall_impression": {
+    "summary": "Trên phim X-quang ngực, phát hiện có sự giãn/phình động mạch chủ với mức độ trung bình. Tình trạng này có thể liên quan đến các yếu tố như tăng huyết áp hoặc bệnh lý mạch máu. Cần theo dõi và đánh giá thêm để xác định nguyên nhân và mức độ nghiêm trọng của tình trạng này.",
+    "most_critical_det_id": null,
+    "overall_severity": "moderate",
+    "requires_urgent_action": false
+  },
+  "metadata": {
+    "rag_version": "2.0",
+    "kb_version": "RAG1_KB_v2.0",
+    "model_used": "openai/gpt-4o-mini",
+    "kb_timestamp": "2026-04-06T13:37:49.611838Z",
+    "processing_time_ms": 10840
+  }
+}

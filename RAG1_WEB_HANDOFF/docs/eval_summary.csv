@@ -1,0 +1,11 @@
+sample,study_id,image_id,patient_context_missing,det_count,overall_severity_final,requires_urgent_action_final,most_critical_det_id_final,expected_combo_flags,final_flag_codes,needs_review_count,vision_candidate_count,severity_mismatch_count,structured_gap_count,safe_mode,vision_mode,detector_model
+dicom_1,study_dicom_1,image_dicom_1,True,2,mild,True,0,FLAG_CARDIO_AORTIC,FLAG_CARDIO_AORTIC,0,2,0,0,True,safe_mode,best
+dicom_10,study_dicom_10,image_dicom_10,True,5,mild,False,,,FLAG_LOW_CONF|FLAG_MULTILESION|FLAG_RAPID_GROWTH,0,5,0,0,True,safe_mode,best
+dicom_2,study_dicom_2,image_dicom_2,True,1,mild,False,,,FLAG_LOW_CONF,0,1,0,0,True,safe_mode,best
+dicom_3,study_dicom_3,image_dicom_3,True,5,mild,False,,,FLAG_LOW_CONF|FLAG_MULTILESION|FLAG_RAPID_GROWTH,0,4,0,0,True,safe_mode,best
+dicom_4,study_dicom_4,image_dicom_4,True,3,mild,False,,,FLAG_RAPID_GROWTH,0,3,0,0,True,safe_mode,best
+dicom_5,study_dicom_5,image_dicom_5,True,13,mild,True,2,FLAG_CARDIO_AORTIC,FLAG_CARDIO_AORTIC|FLAG_LOW_CONF|FLAG_MULTILESION,0,13,0,0,True,safe_mode,best
+dicom_6,study_dicom_6,image_dicom_6,True,1,mild,False,,,FLAG_LOW_CONF,0,1,0,0,True,safe_mode,best
+dicom_7,study_dicom_7,image_dicom_7,True,13,severe,False,,,FLAG_LOW_CONF|FLAG_MULTILESION,0,12,0,0,True,safe_mode,best
+dicom_8,study_dicom_8,image_dicom_8,True,12,moderate,True,0,FLAG_CARDIO_AORTIC|FLAG_EFFUSION_CARDIO,FLAG_CARDIO_AORTIC|FLAG_EFFUSION_CARDIO|FLAG_LOW_CONF|FLAG_MULTILESION,0,12,0,0,True,safe_mode,best
+dicom_9,study_dicom_9,image_dicom_9,True,2,mild,False,,,FLAG_LOW_CONF,0,2,0,0,True,safe_mode,best
