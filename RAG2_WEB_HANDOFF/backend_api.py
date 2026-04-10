@@ -8,7 +8,6 @@ HTTP without depending on the full project repository.
 from __future__ import annotations
 
 import json
-import traceback
 import sys
 import uuid
 from datetime import datetime, timezone
@@ -33,7 +32,7 @@ app = FastAPI(
 )
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -97,7 +96,6 @@ def _run_doctor_revised(payload: dict, source_name: str) -> dict:
     try:
         response = engine.process(revised)
     except Exception as exc:
-        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"RAG2 processing error: {exc}")
 
     return _write_doctor_revised_job(revised, response, source_name)
@@ -123,7 +121,6 @@ def _run_from_rag1(payload: dict, source_name: str, language: str) -> dict:
     try:
         response = engine.process(revised)
     except Exception as exc:
-        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"RAG2 processing error: {exc}")
 
     OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
