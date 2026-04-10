@@ -9,6 +9,8 @@ Implements spec Section 4:
 
 from __future__ import annotations
 
+import time
+
 import chromadb
 from openai import OpenAI
 
@@ -32,10 +34,25 @@ class RAG2Retriever:
 
     def _embed_query(self, text: str) -> list[float]:
         """Embed a single query string."""
-        response = self._openai.embeddings.create(
-            input=[text],
-            model=self.config.embedding_model,
+        started_at = time.perf_counter()
+        print(
+            f"    [Embedding] Single query start model={self.config.embedding_model} "
+            f"chars={len(text)}"
         )
+        try:
+            response = self._openai.embeddings.create(
+                input=[text],
+                model=self.config.embedding_model,
+            )
+        except Exception as exc:
+            elapsed_ms = int((time.perf_counter() - started_at) * 1000)
+            print(
+                f"    [Embedding] Single query failed after {elapsed_ms}ms: "
+                f"{type(exc).__name__}: {exc}"
+            )
+            raise
+        elapsed_ms = int((time.perf_counter() - started_at) * 1000)
+        print(f"    [Embedding] Single query success in {elapsed_ms}ms")
         return response.data[0].embedding
 
     def _build_queries(self, revised: DoctorRevisedJSON) -> list[str]:
@@ -154,31 +171,73 @@ class RAG2Retriever:
         """
         Full retrieval pipeline:
           1. Build 3 parallel queries
-          2. Run semantic search for each
+          2. Run semantic search for each (Using batched embeddings)
           3. Merge and deduplicate
           4. Re-rank with pathology + severity bonuses
           5. Return top K chunks
-
-        Returns:
-            List of chunk dicts with keys: chunk_id, content, layer,
-            pathology_group, final_score, etc.
         """
         queries = self._build_queries(revised)
         top_k_per = self.config.top_k_per_query
         final_k = self.config.top_k_final
 
+        # Step A: Batch embed all queries in ONE call
+        print(f"    [Embedding] Batch embedding {len(queries)} queries...")
+        embed_started_at = time.perf_counter()
+        try:
+            emb_response = self._openai.embeddings.create(
+                input=queries,
+                model=self.config.embedding_model,
+            )
+            query_embeddings = [item.embedding for item in emb_response.data]
+        except Exception as exc:
+            elapsed_ms = int((time.perf_counter() - embed_started_at) * 1000)
+            print(
+                f"    [ERROR] Embedding failed after {elapsed_ms}ms: "
+                f"{type(exc).__name__}: {exc}"
+            )
+            # Fallback or re-raise will be handled by engine
+            raise
+        elapsed_ms = int((time.perf_counter() - embed_started_at) * 1000)
+        print(f"    [Embedding] Batch embedding completed in {elapsed_ms}ms")
+
         # Collect target metadata for re-ranking
         target_classes = set(f.class_name for f in revised.confirmed_findings)
         target_severities = set(f.severity for f in revised.confirmed_findings)
 
-        # Run parallel queries and merge
+        # Step B: Run semantic search for each embedding and merge
         seen_ids: set[str] = set()
         all_chunks: list[dict] = []
 
-        for i, query in enumerate(queries):
+        for i, (query, embedding) in enumerate(zip(queries, query_embeddings)):
             print(f"    [Q{i+1}] {query[:80]}...")
-            results = self._semantic_search(query, top_k=top_k_per)
-            for chunk in results:
+            
+            # Use pre-computed embedding
+            results = self._collection.query(
+                query_embeddings=[embedding],
+                n_results=top_k_per,
+                include=["documents", "metadatas", "distances"],
+            )
+
+            current_query_chunks = []
+            if results and results["ids"] and results["ids"][0]:
+                for j, chunk_id in enumerate(results["ids"][0]):
+                    meta = results["metadatas"][0][j] if results["metadatas"] else {}
+                    doc = results["documents"][0][j] if results["documents"] else ""
+                    distance = results["distances"][0][j] if results["distances"] else 1.0
+                    similarity = max(0.0, 1.0 - distance)
+
+                    current_query_chunks.append({
+                        "chunk_id": chunk_id,
+                        "content": doc,
+                        "cosine_score": similarity,
+                        "layer": meta.get("layer", ""),
+                        "pathology_group": meta.get("pathology_group", ""),
+                        "class_names": meta.get("class_names", ""),
+                        "chunk_type": meta.get("chunk_type", ""),
+                        "source_file": meta.get("source_file", ""),
+                    })
+
+            for chunk in current_query_chunks:
                 if chunk["chunk_id"] not in seen_ids:
                     seen_ids.add(chunk["chunk_id"])
                     chunk["query_source"] = f"Q{i+1}"

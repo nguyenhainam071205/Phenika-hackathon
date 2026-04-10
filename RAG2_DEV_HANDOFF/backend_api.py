@@ -86,6 +86,11 @@ def _run_doctor_revised(payload: dict, source_name: str) -> dict:
     from rag2.engine import RAG2Engine
     from rag2.schema import DoctorRevisedJSON
 
+    print(
+        f"[RAG2 API] /generate-report source={source_name} payload_keys="
+        f"{sorted(payload.keys())}"
+    )
+
     try:
         revised = DoctorRevisedJSON(**payload)
     except Exception as exc:
@@ -93,6 +98,11 @@ def _run_doctor_revised(payload: dict, source_name: str) -> dict:
 
     config = RAG2Config()
     engine = RAG2Engine(config)
+
+    print(
+        f"[RAG2 API] Doctor-Revised parsed query_id={revised.query_id} "
+        f"findings={len(revised.confirmed_findings)}"
+    )
 
     try:
         response = engine.process(revised)
@@ -111,12 +121,21 @@ def _run_from_rag1(payload: dict, source_name: str, language: str) -> dict:
 
     _validate_language(language)
 
+    print(
+        f"[RAG2 API] /demo-from-rag1 source={source_name} language={language} "
+        f"payload_keys={sorted(payload.keys())}"
+    )
+
     try:
         rag1_response = RAG1Response(**payload)
     except Exception as exc:
         raise HTTPException(status_code=400, detail=f"Invalid RAG1 output JSON: {exc}")
 
     revised = rag1_to_doctor_revised(rag1_response, language=language)
+    print(
+        f"[RAG2 API] Adapter complete query_id={revised.query_id} "
+        f"confirmed_findings={len(revised.confirmed_findings)}"
+    )
     config = RAG2Config()
     engine = RAG2Engine(config)
 
@@ -146,6 +165,11 @@ def _run_from_rag1(payload: dict, source_name: str, language: str) -> dict:
     output_path.write_text(
         response.model_dump_json(indent=2, exclude_none=False),
         encoding="utf-8",
+    )
+
+    print(
+        f"[RAG2 API] Job complete job_id={job_id} "
+        f"adapter={adapter_path.name} report={output_path.name}"
     )
 
     return {

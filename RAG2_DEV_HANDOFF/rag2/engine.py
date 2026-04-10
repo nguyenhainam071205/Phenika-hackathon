@@ -102,15 +102,30 @@ class RAG2Engine:
 
     def _call_llm(self, system: str, user: str) -> str:
         """Call LLM via OpenAI-compatible API."""
-        response = self._llm.chat.completions.create(
-            model=self.config.llm_model,
-            messages=[
-                {"role": "system", "content": system},
-                {"role": "user", "content": user},
-            ],
-            temperature=self.config.temperature,
-            max_tokens=self.config.max_tokens,
+        started_at = time.perf_counter()
+        print(
+            f"  [LLM] Chat completion start model={self.config.llm_model} "
+            f"system_chars={len(system)} user_chars={len(user)}"
         )
+        try:
+            response = self._llm.chat.completions.create(
+                model=self.config.llm_model,
+                messages=[
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user},
+                ],
+                temperature=self.config.temperature,
+                max_tokens=self.config.max_tokens,
+            )
+        except Exception as exc:
+            elapsed_ms = int((time.perf_counter() - started_at) * 1000)
+            print(
+                f"  [LLM] Chat completion failed after {elapsed_ms}ms: "
+                f"{type(exc).__name__}: {exc}"
+            )
+            raise
+        elapsed_ms = int((time.perf_counter() - started_at) * 1000)
+        print(f"  [LLM] Chat completion success in {elapsed_ms}ms")
         return response.choices[0].message.content or ""
 
     def _build_retry_feedback(
