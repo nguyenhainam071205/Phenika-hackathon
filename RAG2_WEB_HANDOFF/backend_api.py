@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import sys
+import traceback
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -96,6 +97,7 @@ def _run_doctor_revised(payload: dict, source_name: str) -> dict:
     try:
         response = engine.process(revised)
     except Exception as exc:
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"RAG2 processing error: {exc}")
 
     return _write_doctor_revised_job(revised, response, source_name)
@@ -121,6 +123,7 @@ def _run_from_rag1(payload: dict, source_name: str, language: str) -> dict:
     try:
         response = engine.process(revised)
     except Exception as exc:
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"RAG2 processing error: {exc}")
 
     OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
